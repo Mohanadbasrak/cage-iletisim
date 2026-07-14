@@ -11,9 +11,10 @@
   --ink:#0A0A0A;
   --paper:#FFFFFF;
   --line:#E3E3E3;
-  --line-soft:#F0F0F0;
   --muted:#6E6E6E;
   --faint:#9A9A9A;
+  --accent:#E8531A;
+  --accent-soft:rgba(232,83,26,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--paper)}
@@ -22,12 +23,12 @@ a{color:inherit}
 .wrap{max-width:1180px;margin:0 auto;padding:64px 24px 72px}
 
 /* ---------- HERO ---------- */
-.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);font-weight:500;margin-bottom:18px}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:18px}
 h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(38px,5.2vw,60px);line-height:1.03;letter-spacing:-.015em}
 .lede{max-width:640px;margin-top:22px;font-size:16px;line-height:1.8;color:var(--muted);font-weight:300}
 .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
 .pill{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:100px;padding:8px 17px;font-size:12.5px;font-weight:400}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--ink)}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
 
 .rule{height:1px;background:var(--line);margin:56px 0 40px}
 .h2{font-family:'Playfair Display',serif;font-size:23px;font-weight:500;letter-spacing:-.01em;margin-bottom:7px}
@@ -36,27 +37,29 @@ h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(38px,5.2
 /* ---------- 4 KART ---------- */
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .card{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);
-      padding:28px 24px 24px;text-decoration:none;color:var(--ink);transition:background .28s,color .28s,transform .28s}
-.card:hover{background:var(--ink);color:#fff;transform:translateY(-3px)}
-.ic{width:26px;height:26px;margin-bottom:18px;stroke:currentColor;stroke-width:1.3;fill:none;
+      padding:28px 24px 24px;text-decoration:none;color:var(--ink);position:relative;overflow:hidden;
+      transition:transform .28s,box-shadow .28s,border-color .28s}
+.card::before{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:var(--accent);transition:width .32s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(10,10,10,.07);border-color:#D8D8D8}
+.card:hover::before{width:100%}
+.ic{width:26px;height:26px;margin-bottom:18px;stroke:var(--accent);stroke-width:1.3;fill:none;
     stroke-linecap:round;stroke-linejoin:round}
 .ct{font-size:14.5px;font-weight:500;margin-bottom:9px;letter-spacing:-.01em}
-.cd{font-size:12.5px;line-height:1.7;color:var(--muted);font-weight:300;margin-bottom:20px;flex:1;transition:color .28s}
-.card:hover .cd{color:#B5B5B5}
-.cl{font-size:11.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.cd{font-size:12.5px;line-height:1.7;color:var(--muted);font-weight:300;margin-bottom:20px;flex:1}
+.cl{font-size:12px;font-weight:500;color:var(--accent);letter-spacing:.02em}
 
 /* ---------- KANALLAR ---------- */
 .chan{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line)}
 .ch{padding:30px 26px;border-right:1px solid var(--line);text-decoration:none;color:var(--ink);
-    transition:background .25s,color .25s}
+    position:relative;overflow:hidden;transition:background .25s}
+.ch::before{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:var(--accent);transition:width .32s ease}
 .ch:last-child{border-right:none}
-.ch:hover{background:var(--ink);color:#fff}
-.lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);font-weight:500;
-     margin-bottom:14px;transition:color .25s}
-.ch:hover .lbl{color:#8A8A8A}
-.val{font-size:16.5px;font-weight:400;letter-spacing:-.015em;margin-bottom:7px}
-.note{font-size:11.5px;color:var(--muted);font-weight:300;line-height:1.5;transition:color .25s}
-.ch:hover .note{color:#8A8A8A}
+.ch:hover{background:var(--accent-soft)}
+.ch:hover::before{width:100%}
+.ch:hover .val{color:var(--accent)}
+.lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);font-weight:500;margin-bottom:14px}
+.val{font-size:16.5px;font-weight:400;letter-spacing:-.015em;margin-bottom:7px;transition:color .25s}
+.note{font-size:11.5px;color:var(--muted);font-weight:300;line-height:1.5}
 
 /* ---------- MAĞAZA + HARİTA ---------- */
 .store{display:grid;grid-template-columns:.95fr 1.05fr;margin-top:56px;border:1px solid var(--ink)}
@@ -70,41 +73,20 @@ h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(38px,5.2
 .hr span{color:#A8A8A8;font-weight:300}
 .closed{color:#4F4F4F!important}
 .addr{font-size:13px;line-height:1.7;color:#A8A8A8;font-weight:300;margin-bottom:26px}
-.btn{display:inline-block;background:#fff;color:var(--ink);text-decoration:none;font-size:11.5px;
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-size:11.5px;
      font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:15px 32px;
-     border:1px solid #fff;transition:background .25s,color .25s}
-.btn:hover{background:transparent;color:#fff}
+     border:1px solid var(--accent);transition:background .25s,color .25s}
+.btn:hover{background:transparent;color:var(--accent)}
 .map{position:relative;min-height:100%;background:#F5F5F5}
 .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;
-            filter:grayscale(1) contrast(1.08);transition:filter .4s}
+            filter:grayscale(1) contrast(1.06);transition:filter .4s}
 .map:hover iframe{filter:grayscale(0) contrast(1)}
-
-/* ---------- KÜNYE ---------- */
-.legal{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--line);border-top:none}
-.lg{flex:1;min-width:170px;padding:18px 22px;border-right:1px solid var(--line);
-    font-size:12px;color:var(--muted);font-weight:300;line-height:1.6}
-.lg:last-child{border-right:none}
-.lg b{display:block;color:var(--ink);font-weight:500;font-size:9.5px;letter-spacing:.16em;
-      text-transform:uppercase;margin-bottom:6px}
-
-/* ---------- SSS ---------- */
-.faq{margin-top:64px;max-width:840px}
-details{border-bottom:1px solid var(--line);padding:21px 0}
-details:first-of-type{border-top:1px solid var(--line)}
-summary{cursor:pointer;list-style:none;font-size:15px;font-weight:400;letter-spacing:-.01em;
-        display:flex;justify-content:space-between;align-items:center;gap:24px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-size:19px;font-weight:300;color:var(--ink);transition:transform .25s;flex:none}
-details[open] summary::after{transform:rotate(45deg)}
-details p{font-size:13.5px;line-height:1.85;color:var(--muted);font-weight:300;margin-top:14px;max-width:700px}
-details a{border-bottom:1px solid var(--line);text-decoration:none;transition:border-color .2s}
-details a:hover{border-color:var(--ink)}
 
 /* ---------- FORM KÖPRÜSÜ ---------- */
 .bridge{margin-top:72px;padding-top:44px;border-top:1px solid var(--line);text-align:center}
 .bridge h4{font-family:'Playfair Display',serif;font-size:26px;font-weight:500;letter-spacing:-.01em;margin-bottom:12px}
 .bridge p{font-size:13.5px;color:var(--muted);font-weight:300;line-height:1.75;max-width:460px;margin:0 auto}
-.arrow{margin-top:26px;font-size:20px;color:var(--faint);animation:bob 2.2s ease-in-out infinite}
+.arrow{margin-top:26px;font-size:20px;color:var(--accent);animation:bob 2.2s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 @media(prefers-reduced-motion:reduce){.arrow{animation:none}}
 
@@ -117,7 +99,6 @@ details a:hover{border-color:var(--ink)}
   .ch:nth-last-child(-n+2){border-bottom:none}
   .store{grid-template-columns:1fr}
   .map{min-height:340px}
-  .lg{border-bottom:1px solid var(--line)}
 }
 @media(max-width:600px){
   .wrap{padding:44px 18px 52px}
@@ -127,7 +108,6 @@ details a:hover{border-color:var(--ink)}
   .ch:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
   .ch:last-child{border-bottom:none}
   .store-txt{padding:34px 24px}
-  .lg{min-width:100%;border-right:none}
   .rule{margin:44px 0 32px}
 }
 </style>
@@ -142,7 +122,7 @@ details a:hover{border-color:var(--ink)}
   <div class="meta">
     <span class="pill"><span class="dot"></span> Hafta içi 10:00–18:00</span>
     <span class="pill">Aynı gün içinde yanıt</span>
-    <span class="pill">Atölye mağazamız ziyarete açık</span>
+    <span class="pill">Mağazamız ziyarete açık</span>
   </div>
 
   <div class="rule"></div>
@@ -169,14 +149,14 @@ details a:hover{border-color:var(--ink)}
     <a class="card" href="https://cagearts.com/pages/kalip-kullanim-talimati" target="_top">
       <svg class="ic" viewBox="0 0 24 24"><path d="M4 5h7a2 2 0 012 2v13a2 2 0 00-2-2H4zM20 5h-7a2 2 0 00-2 2v13a2 2 0 012-2h7z"/></svg>
       <div class="ct">Teknik destek</div>
-      <div class="cd">Wax–fitil–esans oranları, kalıp bakımı ve ilk kullanım adımları.</div>
-      <div class="cl">Kullanım Kılavuzu →</div>
+      <div class="cd">Silikon kalıp kullanım talimatları: ilk kullanım, döküm sıcaklığı, kalıp bakımı ve ömrü.</div>
+      <div class="cl">Kalıp Kullanım Talimatı →</div>
     </a>
 
-    <a class="card" href="https://wa.me/905389577885?text=Merhaba%2C%20toptan%20al%C4%B1m%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">
+    <a class="card" href="https://wa.me/908503094524?text=Merhaba%2C%20toptan%20al%C4%B1m%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">
       <svg class="ic" viewBox="0 0 24 24"><path d="M3 9l9-5 9 5v9l-9 5-9-5z"/><path d="M7 11.2v5.6M12 9v9M17 11.2v5.6"/></svg>
       <div class="ct">Toptan & kurumsal</div>
-      <div class="cd">20+ adet siparişler, atölye tedariki ve marka iş birlikleri.</div>
+      <div class="cd">50+ adet siparişler, atölye tedariki ve marka iş birlikleri.</div>
       <div class="cl">WhatsApp'tan yazın →</div>
     </a>
 
@@ -188,15 +168,15 @@ details a:hover{border-color:var(--ink)}
   <div class="h2">Doğrudan iletişim</div>
   <div class="sub">Aracısız, doğrudan atölyeye.</div>
   <div class="chan">
-    <a class="ch" href="tel:+908503094524">
-      <div class="lbl">Müşteri Hattı</div>
-      <div class="val">0850 309 45 24</div>
-      <div class="note">Hafta içi 10:00–18:00</div>
-    </a>
-    <a class="ch" href="https://wa.me/905389577885" target="_blank" rel="noopener">
+    <a class="ch" href="https://wa.me/908503094524" target="_blank" rel="noopener">
       <div class="lbl">WhatsApp</div>
-      <div class="val">0538 957 78 85</div>
+      <div class="val">0850 309 45 24</div>
       <div class="note">En hızlı yanıt burada</div>
+    </a>
+    <a class="ch" href="tel:+905389577885">
+      <div class="lbl">Arama Hattı</div>
+      <div class="val">0538 957 78 85</div>
+      <div class="note">Hafta içi 10:00–18:00</div>
     </a>
     <a class="ch" href="mailto:hello@cagearts.com">
       <div class="lbl">E-posta</div>
@@ -213,8 +193,8 @@ details a:hover{border-color:var(--ink)}
   <!-- MAĞAZA + HARİTA -->
   <div class="store">
     <div class="store-txt">
-      <h3>Atölyemize<br>buyurun</h3>
-      <p>Kalıbı elinize alın, silikonun esnekliğini hissedin, wax'ın kokusunu alın. Küçükçekmece'deki atölye mağazamızda ürünlerimizin tamamı yerinde satışta — üstelik sorularınızı üreten kişiye sorabilirsiniz.</p>
+      <h3>Mağazamızı<br>ziyaret edin</h3>
+      <p>Kalıbı elinize alın, silikonun esnekliğini hissedin, wax'ın kokusunu alın. Küçükçekmece'deki mağazamızda ürünlerimizin tamamı yerinde satışta — üstelik sorularınızı üreten kişiye sorabilirsiniz.</p>
       <div class="hours">
         <div class="hr"><b>Pazartesi – Cuma</b><span>10:00 – 18:00</span></div>
         <div class="hr"><b>Cumartesi – Pazar</b><span class="closed">Kapalı</span></div>
@@ -227,26 +207,6 @@ details a:hover{border-color:var(--ink)}
               allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
               title="Cage Art Studio konumu"></iframe>
     </div>
-  </div>
-
-  <!-- KÜNYE -->
-  <div class="legal">
-    <div class="lg"><b>Ünvan</b>⟨Şirket ünvanı⟩</div>
-    <div class="lg"><b>Vergi Dairesi / No</b>⟨...⟩ / ⟨...⟩</div>
-    <div class="lg"><b>MERSİS No</b>⟨...⟩</div>
-    <div class="lg"><b>KEP Adresi</b>⟨...⟩</div>
-  </div>
-
-  <!-- SSS -->
-  <div class="faq">
-    <div class="h2">Sık sorulanlar</div>
-    <div class="sub">En çok gelen altı soru ve cevapları.</div>
-    <details><summary>Siparişim ne zaman kargoya verilir?</summary><p>⟨X⟩'e kadar verilen siparişler aynı gün, sonrasındakiler ertesi iş günü kargoya teslim edilir. 2.500 TL ve üzeri siparişlerde kargo ücretsizdir. Takip için <a href="https://cagearts.com/pages/order-tracking" target="_top">Sipariş Takibi</a> sayfasını kullanabilirsiniz.</p></details>
-    <details><summary>Kalıbımı ilk kullanımda nasıl hazırlarım?</summary><p>Kalıbı ılık sabunlu suyla yıkayıp tamamen kurutmanız yeterli. Kalıp ayırıcı, döküm sıcaklığı ve bakım detayları için <a href="https://cagearts.com/pages/kalip-kullanim-talimati" target="_top">Silikon Kalıp Kullanım Talimatı</a>na göz atın.</p></details>
-    <details><summary>Kendi tasarımımdan kalıp yaptırabilir miyim?</summary><p>Evet. Görselinizi ya da 3D dosyanızı <a href="https://cagearts.com/pages/ozel-silikon-kalip-hizmeti" target="_top">Özel Kalıp Talebi</a> formundan gönderin; modelleme, kalıp üretimi ve numune sürecini biz yürütelim.</p></details>
-    <details><summary>Toptan alım yapıyor musunuz?</summary><p>Evet. ⟨Adet/tutar eşiği⟩ üzeri siparişler ve düzenli tedarik için özel fiyatlandırma uyguluyoruz. <a href="https://wa.me/905389577885" target="_blank" rel="noopener">WhatsApp'tan</a> ya da hello@cagearts.com üzerinden yazın.</p></details>
-    <details><summary>Hangi wax hangi kalıba uygun?</summary><p>Soya wax çoğu silikon kalıpta sorunsuz çalışır; ince detaylı ve yüksek modellerde parafin/soya karışımı daha net yüzey verir. Ürün başına ihtiyacınız olan miktarı <a href="https://cagearts.com/pages/hesap-makinasi" target="_top">Hesap Makinamız</a>la hesaplayabilirsiniz.</p></details>
-    <details><summary>İade ve değişim nasıl işliyor?</summary><p>Kullanılmamış ve orijinal ambalajındaki ürünler için 14 gün cayma hakkınız var. Detaylar: <a href="https://cagearts.com/pages/teslimat--iptal-ve-iade-kosullari" target="_top">Teslimat, İptal ve İade Koşulları</a>.</p></details>
   </div>
 
   <!-- FORM KÖPRÜSÜ -->
@@ -265,9 +225,6 @@ details a:hover{border-color:var(--ink)}
   };
   window.addEventListener('load', send);
   if(window.ResizeObserver){ new ResizeObserver(send).observe(document.body); }
-  document.querySelectorAll('details').forEach(function(d){
-    d.addEventListener('toggle', function(){ setTimeout(send, 60); });
-  });
 })();
 </script>
 </body>
