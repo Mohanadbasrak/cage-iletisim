@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0A0A0A;--paper:#FAF8F5;--line:#E6E1D9;--accent:#E8531A;--muted:#6B6560}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:64px 24px 24px}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px}
+h1{font-family:'Playfair Display',serif;font-weight:500;font-size:clamp(38px,5vw,58px);line-height:1.05;letter-spacing:-.01em}
+.lede{max-width:640px;margin-top:20px;font-size:16px;line-height:1.75;color:var(--muted);font-weight:300}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:100px;padding:8px 16px;font-size:12.5px;background:#fff}
+.dot{width:6px;height:6px;border-radius:50%;background:#2FBF71}
+.rule{height:1px;background:var(--line);margin:52px 0 36px}
+.h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:500;margin-bottom:6px}
+.sub{font-size:13.5px;color:var(--muted);font-weight:300;margin-bottom:26px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);padding:26px 22px 22px;text-decoration:none;color:inherit;transition:.25s;position:relative;overflow:hidden}
+.card:before{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:var(--accent);transition:.3s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(10,10,10,.07)}
+.card:hover:before{width:100%}
+.ic{width:26px;height:26px;margin-bottom:16px;stroke:var(--accent);stroke-width:1.4;fill:none}
+.ct{font-size:14.5px;font-weight:500;margin-bottom:8px}
+.cd{font-size:12.5px;line-height:1.65;color:var(--muted);font-weight:300;margin-bottom:18px;flex:1}
+.cl{font-size:12px;font-weight:500;color:var(--accent)}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.wrap{padding:44px 18px 20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">İletişim</div>
+  <h1>Bize Ulaşın</h1>
+  <p class="lede">Bir kalıp fikri, bir sipariş sorusu ya da mumunuzun neden çatladığı — hangisi olursa olsun, atölyeden biri yanıtlıyor. 2019'dan beri kalıplarımızı kendimiz üretiyoruz; sorularınızı da aynı masadan cevaplıyoruz.</p>
+  <div class="meta">
+    <span class="pill"><span class="dot"></span> Hafta içi 10:00–18:00</span>
+    <span class="pill">Aynı gün içinde yanıt</span>
+    <span class="pill">Atölye mağazamız ziyarete açık</span>
+  </div>
+
+  <div class="rule"></div>
+
+  <div class="h2">Ne için yazıyorsunuz?</div>
+  <div class="sub">Aşağıdakilerden biriyse cevabı form doldurmadan, hemen bulabilirsiniz.</div>
+
+  <div class="grid">
+    <a class="card" href="https://cagearts.com/pages/order-tracking" target="_top">
+      <svg class="ic" viewBox="0 0 24 24"><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+      <div class="ct">Siparişim nerede?</div>
+      <div class="cd">Kargonuzu takip numarasıyla saniyeler içinde görüntüleyin.</div>
+      <div class="cl">Sipariş Takibi →</div>
+    </a>
+    <a class="card" href="https://cagearts.com/pages/ozel-silikon-kalip-hizmeti" target="_top">
+      <svg class="ic" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg>
+      <div class="ct">Kendi kalıbınız</div>
+      <div class="cd">Fikrinizi gönderin; 3D modelleyip size özel silikon kalıba dönüştürelim.</div>
+      <div class="cl">Özel Kalıp Talebi →</div>
+    </a>
+    <a class="card" href="https://cagearts.com/pages/kalip-kullanim-talimati" target="_top">
+      <svg class="ic" viewBox="0 0 24 24"><path d="M4 5h7a2 2 0 012 2v13a2 2 0 00-2-2H4zM20 5h-7a2 2 0 00-2 2v13a2 2 0 012-2h7z"/></svg>
+      <div class="ct">Teknik destek</div>
+      <div class="cd">Wax–fitil–esans oranları, kalıp bakımı ve ilk kullanım adımları.</div>
+      <div class="cl">Kullanım Kılavuzu →</div>
+    </a>
+    <a class="card" href="https://wa.me/905389577885?text=Merhaba%2C%20toptan%20al%C4%B1m%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">
+      <svg class="ic" viewBox="0 0 24 24"><path d="M3 9l9-5 9 5v9l-9 5-9-5z"/><path d="M7 11v6M12 9v9M17 11v6"/></svg>
+      <div class="ct">Toptan & kurumsal</div>
+      <div class="cd">20+ adet siparişler, atölye tedariki ve marka iş birlikleri.</div>
+      <div class="cl">WhatsApp'tan yazın →</div>
+    </a>
+  </div>
+</div>
+<script>
+const h=()=>parent.postMessage({type:'cage-h',id:'ust',h:document.body.scrollHeight},'*');
+window.addEventListener('load',h);new ResizeObserver(h).observe(document.body);
+</script>
+</body>
+</html>
